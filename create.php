@@ -5,13 +5,14 @@ function test(){
 }
 
 function createTeam(){
-$createTabeleTeam = "
+    global server_connection
+    $createTabeleTeam = "
         CREATE TABLE IF NOT EXISTS team(
         id_team INT AUTO_INCREMENT,
         name VARCHAR(100) NOT NULL,
         PRIMARY KEY(id_team)
     );";
-    echo "test";
+
     try{
         $server_connection->exec($createTabeleTeam);
         echo "created table team<br>";
