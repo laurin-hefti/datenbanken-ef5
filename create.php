@@ -5,7 +5,7 @@ function test(){
 }
 
 function createTeam(){
-    global server_connection
+    global $server_connection;
     $createTabeleTeam = "
         CREATE TABLE IF NOT EXISTS team(
         id_team INT AUTO_INCREMENT,
@@ -22,6 +22,7 @@ function createTeam(){
 }
 
 function createPlayer(){
+    global $server_connection;
     $createTabellePlayer = "
         CREATE TABLE IF NOT EXISTS player(
             id_player INT AUTO_INCREMENT,
@@ -33,7 +34,7 @@ function createPlayer(){
     );";
 
     try{
-        $server_connection->exec($createTabellePlyer);
+        $server_connection->exec($createTabellePlayer);
         echo "created table player<br>";
     } catch(PDOException $e){
         echo "create Tabele player faild". $e->getMessage();
@@ -41,6 +42,7 @@ function createPlayer(){
 }
 
 function createReferee(){
+    global $server_connection;
     $createTabelleReferee = "
         CREATE TABLE IF NOT EXISTS referee(
             id_referee INT AUTO_INCREMENT,
@@ -61,6 +63,7 @@ function createReferee(){
 }
 
 function createField(){
+    global $server_connection;
     $createTabelleField = "
         CREATE TABLE IF NOT EXISTS field(
             id_field INT AUTO_INCREMENT,
@@ -76,6 +79,7 @@ function createField(){
 }
 
 function createGame(){
+    global $server_connection;
     $createTabelleGame = "
         CREATE TABLE IF NOT EXISTS game(
             id_game INT AUTO_INCREMENT,
