@@ -46,12 +46,9 @@ function createReferee(){
     $createTabelleReferee = "
         CREATE TABLE IF NOT EXISTS referee(
             id_referee INT AUTO_INCREMENT,
-            firtsname VARCHAR(100) NOT NULL,
-            lastname VARCHAR(100) NOT NULL,
+            player INT NOT NULL,
             PRIMARY KEY(id_referee),
             FOREIGN KEY (player) REFERENCES player(id_player)
-            FOREIGN KEY(firstname) REFERENCES player(firstname),
-            FOREIGN KEY(lastname) REFERENCES player(lastname),
     );";
 
     try{
@@ -83,16 +80,16 @@ function createGame(){
     $createTabelleGame = "
         CREATE TABLE IF NOT EXISTS game(
             id_game INT AUTO_INCREMENT,
-            time TIMESAMP NOT NULL,
+            time TIMESTAMP NOT NULL,
             fieldnorth INT NOT NULL,
             fieldsouth INT NOT NULL,
             field INT NOT NULL,
             referee INT NOT NULL,
             PRIMARY KEY (id_game),
-            FOREIGN KEY(fieldnorth) REFERECES team(id_team),
-            FOREIGN KEY(fieldsouth) REFERECES team(id_team),
-            FOREIGEN KEY(field) REFERECES field(id_field),
-            FOREIGEN KEY(referee) REFERECES referee(id_referee)
+            FOREIGN KEY (fieldnorth) REFERENCES team(id_team),
+            FOREIGN KEY (fieldsouth) REFERENCES team(id_team),
+            FOREIGN KEY (field) REFERENCES field(id_field),
+            FOREIGN KEY (referee) REFERENCES referee(id_referee)
     );";
 
     try{
@@ -101,6 +98,14 @@ function createGame(){
     } catch(PDOException $e){
         echo "create Tabele game faild". $e->getMessage();
     }
+}
+
+function createall(){
+    createTeam();
+    createPlayer();
+    createReferee();
+    createField();
+    createGame();
 }
 
 ?>

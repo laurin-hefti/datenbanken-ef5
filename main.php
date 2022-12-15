@@ -1,6 +1,5 @@
 <?php
 
-
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -13,7 +12,14 @@ try{
     echo "connaction fild" .$e -> getMessage();
 }
 
-include 'create.php';
+include "create.php";
+include "insert.php";
+include "delet.php";
 
-test();
+createall();
+
+
+deletData();
+
+header("Location: inputform.html", true, 301);
 ?>
