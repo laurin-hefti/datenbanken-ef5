@@ -18,8 +18,7 @@ include "delet.php";
 
 createall();
 
-
-deletData();
+readData();
 
 header("Location: inputform.html", true, 301);
 ?>

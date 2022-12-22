@@ -1,9 +1,5 @@
 <?php
 
-function test(){
-    echo "test";
-}
-
 function createTeam(){
     global $server_connection;
     $createTabeleTeam = "
